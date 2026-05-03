@@ -31,6 +31,36 @@ function get_json_body(): array {
  * Router principal
  */
 function route_request(string $method, string $uri): void {
+    // Debug auth — tester curl vers Supabase
+    if ($uri === '/debug-auth' && $method === 'GET') {
+        $header = $_SERVER['HTTP_AUTHORIZATION'] ?? 'none';
+        $token = preg_match('/^Bearer\s+(.+)$/', $header, $m) ? $m[1] : 'no token';
+
+        $url = get_supabase_url() . '/auth/v1/user';
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'apikey: ' . get_supabase_key(),
+            'Authorization: Bearer ' . $token,
+        ]);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $response = curl_exec($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $curl_error = curl_error($ch);
+        curl_close($ch);
+
+        json_response([
+            'auth_header' => substr($header, 0, 30) . '...',
+            'token_length' => strlen($token),
+            'supabase_url' => $url,
+            'curl_http_code' => $http_code,
+            'curl_error' => $curl_error ?: 'none',
+            'response_preview' => substr($response ?: 'empty', 0, 200),
+        ]);
+        return;
+    }
+
     // Health check + debug env
     if ($uri === '/health' && $method === 'GET') {
         json_response([
