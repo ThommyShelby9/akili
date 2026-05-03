@@ -27,9 +27,8 @@ function authenticate(): ?array {
         'apikey: ' . get_supabase_key(),
         'Authorization: Bearer ' . $token,
     ]);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-    curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Dev only — à activer en prod
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
     $response = curl_exec($ch);
     $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
