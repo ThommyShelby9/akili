@@ -1,10 +1,1 @@
-{
-    "data": null,
-    "error": {
-        "code": "UNAUTHORIZED",
-        "message": "Token manquant ou invalide"
-    },
-    "meta": null
-}
-
-{"data":{"status":"ok","version":"0.1.0","supabase_url":"set (40 chars)","service_key":"set (224 chars)","env_file_api":"exists","env_file_root":"not found"},"error":null,"meta":null}
+{"data":{"auth_header":"none...","token_length":8,"supabase_url":"https:\/\/psnjtreyfbnuebulohbu.supabase.co\/auth\/v1\/user","curl_http_code":401,"curl_error":"none","response_preview":"{\"message\":\"Invalid API key\",\"hint\":\"Double check your Supabase `anon` or `service_role` API key.\"}"},"error":null,"meta":null}   Bearer eyJhbGciOiJFUzI1NiIsImtpZCI6IjVjM2NkZTRjLTRiNmMtNGRmOS04MjQ5LTdhOGUxNDBlMjcyZCIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwczovL3Bzbmp0cmV5ZmJudWVidWxvaGJ1LnN1cGFiYXNlLmNvL2F1dGgvdjEiLCJzdWIiOiIyZDUxZDQ0Yi1mOTA0LTRmYmEtOWQzNC0yMzkzM2Q0MGQ0MzMiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzc3ODUzMjI5LCJpYXQiOjE3Nzc4NDk2MjksImVtYWlsIjoicm1pc3NpbWF3dUBnbWFpbC5jb20iLCJwaG9uZSI6IiIsImFwcF9tZXRhZGF0YSI6eyJwcm92aWRlciI6ImVtYWlsIiwicHJvdmlkZXJzIjpbImVtYWlsIl19LCJ1c2VyX21ldGFkYXRhIjp7ImVtYWlsIjoicm1pc3NpbWF3dUBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiTWVybHV4IFJvc3RlbCBNaXNzaW1hd3UgUEFOT1VNQVNTSSIsInBob25lX3ZlcmlmaWVkIjpmYWxzZSwic3ViIjoiMmQ1MWQ0NGItZjkwNC00ZmJhLTlkMzQtMjM5MzNkNDBkNDMzIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoicGFzc3dvcmQiLCJ0aW1lc3RhbXAiOjE3Nzc4NDk2Mjl9XSwic2Vzc2lvbl9pZCI6ImI0ZTViZjU2LWI3OTItNDkxOC1iNzM2LWMyOTU5MDVmZjcyYiIsImlzX2Fub255bW91cyI6ZmFsc2V9.j4rkgnyk6EcV-s0UHgCURQvXOxNnFP_g8ENGnmAoi63wIgHF3RTi08SIFs6rt4DvWTaDFbrMt9te7tdrbrILKw
