@@ -41,4 +41,8 @@ RUN chown -R www-data:www-data /var/www/html \
 # Port
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+# Script de démarrage — écrit le .env depuis les variables Docker avant de lancer Apache
+COPY docker/start.sh /start.sh
+RUN chmod +x /start.sh
+
+CMD ["/start.sh"]

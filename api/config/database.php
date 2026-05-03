@@ -4,7 +4,8 @@
  * Charge le .env puis expose les getters
  */
 
-// Charger le .env à la racine du projet
+// Charger le .env (dossier api en prod Docker, racine en dev)
+load_env(__DIR__ . '/../.env');
 load_env(__DIR__ . '/../../.env');
 
 function load_env(string $path): void {
