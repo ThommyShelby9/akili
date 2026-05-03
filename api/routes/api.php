@@ -31,9 +31,16 @@ function get_json_body(): array {
  * Router principal
  */
 function route_request(string $method, string $uri): void {
-    // Health check
+    // Health check + debug env
     if ($uri === '/health' && $method === 'GET') {
-        json_response(['status' => 'ok', 'version' => '0.1.0']);
+        json_response([
+            'status' => 'ok',
+            'version' => '0.1.0',
+            'supabase_url' => get_supabase_url() ? 'set (' . strlen(get_supabase_url()) . ' chars)' : 'MISSING',
+            'service_key' => get_supabase_key() ? 'set (' . strlen(get_supabase_key()) . ' chars)' : 'MISSING',
+            'env_file_api' => file_exists(__DIR__ . '/../.env') ? 'exists' : 'not found',
+            'env_file_root' => file_exists(__DIR__ . '/../../.env') ? 'exists' : 'not found',
+        ]);
         return;
     }
 
