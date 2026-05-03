@@ -3,7 +3,6 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import Seo from '../components/Seo'
 import AkiliLogo from '../components/AkiliLogo'
 import { useAuth } from '../features/auth/AuthContext'
-import { supabase } from '../lib/supabase'
 
 export default function Login() {
   const [activeTab, setActiveTab] = useState('login')
@@ -29,17 +28,7 @@ export default function Login() {
     try {
       if (activeTab === 'login') {
         const data = await signIn(email, password)
-        // Vérifier si l'onboarding est complété
-        const { data: prof } = await supabase
-          .from('profiles')
-          .select('onboarding_completed')
-          .eq('id', data.user.id)
-          .single()
-        if (prof && !prof.onboarding_completed) {
-          navigate('/onboarding', { replace: true })
-        } else {
-          navigate(from, { replace: true })
-        }
+        navigate(from, { replace: true })
       } else {
         await signUp(email, password, fullName)
         setConfirmEmail(true)
