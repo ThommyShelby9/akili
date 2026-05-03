@@ -19,12 +19,18 @@ export default function Settings() {
     api.profile.get()
       .then(res => {
         setProfile(res.data)
-        // Charger les préférences notifications
-        return fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000/api'}/notifications/preferences`, {
-          headers: { 'Authorization': `Bearer ${user?.access_token}` }
+      })
+      .catch(() => {
+        // Fallback: utiliser les données de l'auth
+        setProfile({
+          full_name: user?.user_metadata?.full_name || '',
+          job_role: '',
+          sector: '',
+          plan: 'free',
+          quota_used: 0,
+          quota_limit: 10,
         })
       })
-      .catch(() => {})
       .finally(() => setLoading(false))
   }, [])
 

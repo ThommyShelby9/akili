@@ -12,7 +12,9 @@
       "Bash(curl -s -X POST https://psnjtreyfbnuebulohbu.supabase.co/rest/v1/rpc/pg_stat_statements -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzbmp0cmV5ZmJudWVidWxvaGJ1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Nzc3NzQzOCwiZXhwIjoyMDkzMzUzNDM4fQ.xgn0xE_HVJzXx7mt_JiIvNrK9Kza2J0tR_s_Vw2tBpE' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzbmp0cmV5ZmJudWVidWxvaGJ1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Nzc3NzQzOCwiZXhwIjoyMDkzMzUzNDM4fQ.xgn0xE_HVJzXx7mt_JiIvNrK9Kza2J0tR_s_Vw2tBpE')",
       "Bash(curl -s -X POST https://psnjtreyfbnuebulohbu.supabase.co/rest/v1/rpc/ -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzbmp0cmV5ZmJudWVidWxvaGJ1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Nzc3NzQzOCwiZXhwIjoyMDkzMzUzNDM4fQ.xgn0xE_HVJzXx7mt_JiIvNrK9Kza2J0tR_s_Vw2tBpE' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzbmp0cmV5ZmJudWVidWxvaGJ1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Nzc3NzQzOCwiZXhwIjoyMDkzMzUzNDM4fQ.xgn0xE_HVJzXx7mt_JiIvNrK9Kza2J0tR_s_Vw2tBpE' -H 'Content-Type: application/json')",
       "Bash(curl:*)",
-      "Bash(node -e \"const d=require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\);const j=JSON.parse\\(d\\);console.log\\(j.length+' scripts en base:'\\);j.forEach\\(s=>console.log\\('  ✓',s.category,'—',s.name\\)\\)\")"
+      "Bash(node -e \"const d=require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\);const j=JSON.parse\\(d\\);console.log\\(j.length+' scripts en base:'\\);j.forEach\\(s=>console.log\\('  ✓',s.category,'—',s.name\\)\\)\")",
+      "Bash(php --version)",
+      "Bash(php -S localhost:8000 -t api/ api/index.php)"
     ]
   },
   "enableAllProjectMcpServers": true,

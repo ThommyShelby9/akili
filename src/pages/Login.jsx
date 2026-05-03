@@ -9,6 +9,7 @@ export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [fullName, setFullName] = useState('')
+  const [confirmEmail, setConfirmEmail] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [resetSent, setResetSent] = useState(false)
@@ -29,7 +30,7 @@ export default function Login() {
         navigate(from, { replace: true })
       } else {
         await signUp(email, password, fullName)
-        navigate('/onboarding', { replace: true })
+        setConfirmEmail(true)
       }
     } catch (err) {
       setError(err.message === 'Invalid login credentials'
@@ -146,6 +147,11 @@ export default function Login() {
 
           {error && <div className="form-error">{error}</div>}
           {resetSent && <div className="form-success">Email de réinitialisation envoyé ! Vérifie ta boîte.</div>}
+          {confirmEmail && (
+            <div className="form-success">
+              Compte créé ! Vérifie ta boîte email pour confirmer ton adresse, puis connecte-toi.
+            </div>
+          )}
 
           <form onSubmit={handleSubmit}>
             {activeTab === 'signup' && (

@@ -148,7 +148,7 @@
   border-color: var(--accent);
   background: rgba(37,99,235,0.08);
 }
-.step-option-icon { font-size: 20px; }
+.step-option-icon { color: var(--accent); flex-shrink: 0; }
 
 /* ── Goals grid ── */
 .step-goals-grid {
@@ -175,7 +175,7 @@
   border-color: var(--accent);
   background: rgba(37,99,235,0.06);
 }
-.step-goal-icon { font-size: 24px; }
+.step-goal-icon { color: var(--accent); flex-shrink: 0; }
 .step-goal-card strong { font-size: 14px; color: var(--text); }
 .step-goal-desc { font-size: 12px; color: var(--text-2); }
 .step-goal-check {
@@ -280,7 +280,7 @@
 /* ── Complete step ── */
 .step-complete { max-width: 480px; }
 .step-complete-celebration { margin-bottom: var(--s-6); }
-.step-complete-icon { font-size: 56px; animation: celebrateBounce 0.6s var(--ease-out); }
+.step-complete-icon { color: #3DD68C; animation: celebrateBounce 0.6s var(--ease-out); }
 @keyframes celebrateBounce {
   0% { transform: scale(0); }
   60% { transform: scale(1.3); }

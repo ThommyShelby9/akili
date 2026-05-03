@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Palette, Building2, Code2, Sparkles } from 'lucide-react'
 import { api } from '../../../lib/api'
+import { useAuth } from '../../auth/AuthContext'
 
 const ROLES = [
-  { id: 'freelance', label: 'Freelance', icon: '🎨' },
-  { id: 'pme', label: 'PME / Équipe', icon: '🏢' },
-  { id: 'dev', label: 'Développeur', icon: '💻' },
-  { id: 'other', label: 'Autre', icon: '✨' },
+  { id: 'freelance', label: 'Freelance', Icon: Palette },
+  { id: 'pme', label: 'PME / Équipe', Icon: Building2 },
+  { id: 'dev', label: 'Développeur', Icon: Code2 },
+  { id: 'other', label: 'Autre', Icon: Sparkles },
 ]
 
 const SECTORS = [
@@ -15,9 +17,18 @@ const SECTORS = [
 
 export default function StepProfile({ data, updateData, next }) {
   const [saving, setSaving] = useState(false)
+  const { user } = useAuth()
+
+  // Pré-remplir avec le nom de l'inscription
+  useEffect(() => {
+    const nameFromAuth = user?.user_metadata?.full_name || ''
+    if (nameFromAuth && !data.fullName) {
+      updateData({ fullName: nameFromAuth })
+    }
+  }, [user])
 
   async function handleContinue() {
-    if (!data.fullName || !data.jobRole) return
+    if (!data.jobRole) return
     setSaving(true)
     try {
       await api.profile.update({
@@ -26,7 +37,7 @@ export default function StepProfile({ data, updateData, next }) {
         sector: data.sector,
       })
     } catch {
-      // Non-bloquant — on continue même si la sauvegarde échoue
+      // Non-bloquant
     }
     setSaving(false)
     next()
@@ -34,18 +45,8 @@ export default function StepProfile({ data, updateData, next }) {
 
   return (
     <div className="step-content">
-      <h2>Qui es-tu ?</h2>
-      <p className="step-desc">Aide-nous à personnaliser ton expérience.</p>
-
-      <div className="step-field">
-        <label>Ton prénom</label>
-        <input
-          type="text"
-          placeholder="Comment on t'appelle ?"
-          value={data.fullName}
-          onChange={e => updateData({ fullName: e.target.value })}
-        />
-      </div>
+      <h2>Bienvenue{data.fullName ? `, ${data.fullName}` : ''} !</h2>
+      <p className="step-desc">Dis-nous en plus sur toi pour personnaliser ton expérience.</p>
 
       <div className="step-field">
         <label>Ton rôle</label>
@@ -56,7 +57,7 @@ export default function StepProfile({ data, updateData, next }) {
               className={`step-option ${data.jobRole === role.id ? 'active' : ''}`}
               onClick={() => updateData({ jobRole: role.id })}
             >
-              <span className="step-option-icon">{role.icon}</span>
+              <role.Icon size={20} className="step-option-icon" />
               <span>{role.label}</span>
             </button>
           ))}
@@ -77,7 +78,7 @@ export default function StepProfile({ data, updateData, next }) {
       <button
         className="onboarding-btn-primary"
         onClick={handleContinue}
-        disabled={!data.fullName || !data.jobRole || saving}
+        disabled={!data.jobRole || saving}
       >
         {saving ? 'Enregistrement...' : 'Continuer →'}
       </button>

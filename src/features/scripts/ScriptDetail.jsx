@@ -140,10 +140,26 @@ export default function ScriptDetail() {
         <div className="script-result success">
           <div className="script-result-header">
             <span className="script-result-icon">✓</span>
-            <strong>Succès</strong>
-            <span className="script-result-duration">{result.duration_ms}ms</span>
+            <strong>Terminé avec succès</strong>
+            <span className="script-result-duration">{(result.duration_ms / 1000).toFixed(1)}s</span>
           </div>
-          <pre className="script-result-output">{JSON.stringify(result.result, null, 2)}</pre>
+
+          {/* Message principal */}
+          {result.result?.message && (
+            <div className="script-result-message">{result.result.message}</div>
+          )}
+
+          {/* Détails structurés */}
+          <div className="script-result-details">
+            {Object.entries(result.result || {}).filter(([key]) => key !== 'message').map(([key, value]) => (
+              <div key={key} className="script-result-detail-row">
+                <span className="script-result-detail-key">{key.replace(/_/g, ' ')}</span>
+                <span className="script-result-detail-value">
+                  {typeof value === 'object' ? JSON.stringify(value) : String(value)}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       )}
 

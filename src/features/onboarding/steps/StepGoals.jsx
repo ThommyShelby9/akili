@@ -1,10 +1,12 @@
+import { Receipt, FolderOpen, Mail, Rocket, BarChart2, Cloud } from 'lucide-react'
+
 const GOALS = [
-  { id: 'facturation', label: 'Facturation', desc: 'Générer et envoyer des factures', icon: '📄' },
-  { id: 'fichiers', label: 'Gestion de fichiers', desc: 'Renommer, trier, compresser', icon: '📁' },
-  { id: 'emails', label: 'Emails', desc: 'Campagnes et réponses auto', icon: '📧' },
-  { id: 'deploiements', label: 'Déploiements', desc: 'Pipelines CI/CD automatisés', icon: '🚀' },
-  { id: 'rapports', label: 'Rapports', desc: 'Exports CSV et résumés', icon: '📊' },
-  { id: 'stockage', label: 'Sauvegarde', desc: 'Backup et synchronisation', icon: '☁️' },
+  { id: 'facturation', label: 'Facturation', desc: 'Générer et envoyer des factures', Icon: Receipt },
+  { id: 'fichiers', label: 'Gestion de fichiers', desc: 'Renommer, trier, compresser', Icon: FolderOpen },
+  { id: 'emails', label: 'Emails', desc: 'Campagnes et réponses auto', Icon: Mail },
+  { id: 'deploiements', label: 'Déploiements', desc: 'Pipelines CI/CD automatisés', Icon: Rocket },
+  { id: 'rapports', label: 'Rapports', desc: 'Exports CSV et résumés', Icon: BarChart2 },
+  { id: 'stockage', label: 'Sauvegarde', desc: 'Backup et synchronisation', Icon: Cloud },
 ]
 
 export default function StepGoals({ data, updateData, next }) {
@@ -27,7 +29,7 @@ export default function StepGoals({ data, updateData, next }) {
             className={`step-goal-card ${data.goals.includes(goal.id) ? 'active' : ''}`}
             onClick={() => toggleGoal(goal.id)}
           >
-            <span className="step-goal-icon">{goal.icon}</span>
+            <goal.Icon size={24} className="step-goal-icon" />
             <strong>{goal.label}</strong>
             <span className="step-goal-desc">{goal.desc}</span>
             {data.goals.includes(goal.id) && <span className="step-goal-check">✓</span>}

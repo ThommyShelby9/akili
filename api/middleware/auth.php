@@ -38,6 +38,7 @@ function require_auth(): array {
     $user = authenticate();
 
     if (!$user) {
+        log_auth('UNAUTHORIZED', $_SERVER['REQUEST_URI'] ?? '');
         json_response(null, ['code' => 'UNAUTHORIZED', 'message' => 'Token manquant ou invalide'], null, 401);
         exit;
     }

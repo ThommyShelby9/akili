@@ -67,6 +67,9 @@ function run_script(string $slug): void {
     ];
     supabase_post('executions', $execution);
 
+    // Logger l'exécution
+    log_execution($user['id'], $slug, $result['status'], $result['duration_ms']);
+
     // Incrémenter le quota
     increment_quota($user['id']);
 
