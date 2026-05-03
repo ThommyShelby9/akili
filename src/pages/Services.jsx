@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Seo from '../components/Seo'
 import {
   Search, Workflow, BrainCircuit, GitMerge,
   TrendingUp, Code2, Cloud, BarChart2, GraduationCap,
@@ -156,13 +157,14 @@ const PILLARS = [
 export default function Services() {
   return (
     <div className="akili">
+      <Seo title="Services" description="De l'audit au déploiement. Automatisation des processus, IA, intégration de systèmes — accompagnement complet pour votre entreprise." />
       <Nav />
 
       {/* HERO */}
       <section className="feat-hero">
         <div className="container">
           <div className="eyebrow eyebrow--center">Services</div>
-          <h1>De l'audit au déploiement.<br /><span className="c-pink">On s'occupe de tout.</span></h1>
+          <h1>De l'audit au déploiement.<br /><span className="c-cyan">On s'occupe de tout.</span></h1>
           <p>Akili ne vend pas seulement des outils — nous proposons un accompagnement complet pour rendre ton entreprise plus rapide, plus efficace et scalable.</p>
           <div className="cta-row cta-row--center">
             <Link to="/login" className="btn-primary">Démarrer maintenant <span className="arrow">→</span></Link>

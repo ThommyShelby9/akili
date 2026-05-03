@@ -24,7 +24,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--s-1);
-  background: var(--bg-2);
+  background: rgba(255,255,255,0.04);
   border: 1px solid var(--border);
   border-radius: var(--r-pill);
   padding: 4px;
@@ -45,7 +45,7 @@
   align-items: center;
   gap: 8px;
 }
-.billing-toggle button.active { background: var(--bg-3); color: var(--text); }
+.billing-toggle button.active { background: var(--bg-2); color: var(--text); }
 .save-badge {
   font-family: var(--font-mono);
   font-size: 9px;
@@ -86,7 +86,7 @@
   left: 50%;
   transform: translateX(-50%);
   background: var(--accent);
-  color: var(--bg);
+  color: #fff;
   font-family: var(--font-mono);
   font-size: 10px;
   font-weight: 700;
@@ -95,6 +95,7 @@
   padding: 4px 16px;
   border-radius: var(--r-pill);
   white-space: nowrap;
+  box-shadow: 0 0 16px var(--glow-accent);
 }
 .plan-name {
   font-family: var(--font-mono);
@@ -169,13 +170,13 @@
   color: var(--text);
   border: 1px solid var(--border-2);
 }
-.plan-cta-ghost:hover { border-color: var(--border-3); background: var(--bg-2); }
+.plan-cta-ghost:hover { border-color: var(--blue); color: var(--blue); background: rgba(41,171,226,0.05); }
 .plan-cta-solid {
-  background: var(--text);
-  color: var(--bg);
+  background: var(--accent);
+  color: #fff;
   border: none;
 }
-.plan-cta-solid:hover { background: var(--accent); color: white; transform: translateY(-1px); }
+.plan-cta-solid:hover { background: #3B82F6; box-shadow: 0 0 20px var(--glow-accent); transform: translateY(-1px); }
 
 /* ── Tableau comparatif ── */
 .compare-section {
@@ -246,12 +247,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--bg-1);
+  background: var(--surface);
   transition: background .15s;
   user-select: none;
   list-style: none;
 }
-.faq-q:hover { background: var(--bg-2); }
+.faq-q:hover { background: var(--surface-2); }
 .faq-q .faq-icon { color: var(--accent); font-size: 22px; font-weight: 300; line-height: 1; transition: transform .2s; }
 .faq-q .faq-icon.open { transform: rotate(45deg); }
 .faq-a {
@@ -259,7 +260,7 @@
   font-size: 14px;
   color: var(--text-2);
   line-height: 1.7;
-  background: var(--bg-1);
+  background: var(--surface);
 }
 
 @media (max-width: 768px) {

@@ -16,12 +16,12 @@ export default function Footer() {
             <Link to="/services">Services</Link>
             <Link to="/pricing">Tarifs</Link>
             <a href="#">Changelog</a>
-            <a href="#">Docs</a>
+            <Link to="/docs">Docs</Link>
           </div>
           <div className="footer-col">
             <div className="footer-col-title">Entreprise</div>
             <a href="#">À propos</a>
-            <a href="#">Blog</a>
+            <Link to="/contact">Contact</Link>
             <a href="#">Carrières</a>
           </div>
           <div className="footer-col">

@@ -26,6 +26,7 @@ export default function Nav() {
             <Link to="/docs" className={isActive('/docs')}>Docs</Link>
             <Link to="/#integrations">Intégrations</Link>
             <Link to="/pricing" className={isActive('/pricing')}>Tarifs</Link>
+            <Link to="/contact" className={isActive('/contact')}>Contact</Link>
             <Link to="/login" className="nav-cta">Commencer →</Link>
           </div>
           <button
@@ -45,6 +46,7 @@ export default function Nav() {
         <Link to="/docs" className={isActive('/docs')} onClick={close}>Docs</Link>
         <Link to="/#integrations" onClick={close}>Intégrations</Link>
         <Link to="/pricing" className={isActive('/pricing')} onClick={close}>Tarifs</Link>
+        <Link to="/contact" className={isActive('/contact')} onClick={close}>Contact</Link>
         <Link to="/login" className="nav-cta btn-primary" onClick={close}>Commencer →</Link>
       </div>
     </>

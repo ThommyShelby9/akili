@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import Seo from '../components/Seo'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
@@ -39,6 +40,7 @@ export default function Landing() {
 
   return (
     <div className="akili" data-screen-label="Landing">
+      <Seo description="Automatise tes tâches répétitives sans une ligne de code. Facturation, fichiers, déploiements — Akili s'en charge. Made in Cotonou." />
       <Nav />
 
       {/* HERO */}
@@ -61,7 +63,7 @@ export default function Landing() {
             </p>
             <div className="cta-row">
               <Link to="/login" className="btn-primary">Commencer gratuitement <span className="arrow">→</span></Link>
-              <button className="btn-ghost" style={{ color: 'rgba(248,250,252,0.7)', borderColor: 'rgba(248,250,252,0.2)' }}>Voir une démo</button>
+              <button className="btn-ghost">Voir une démo</button>
             </div>
             <div className="trust-strip">
               <div className="trust-label">Ils automatisent avec Akili</div>
@@ -102,11 +104,11 @@ export default function Landing() {
         </div>
         <div className="hero-feats">
           <div className="hero-feats-inner">
-            <div className="hero-feat"><span className="hero-feat-dot" style={{ color: '#2563EB' }}>●</span><span className="hero-feat-text">Automatise sans effort</span></div>
-            <div className="hero-feat"><span className="hero-feat-dot" style={{ color: '#06B6D4' }}>●</span><span className="hero-feat-text">0 ligne de code requise</span></div>
-            <div className="hero-feat"><span className="hero-feat-dot" style={{ color: '#2563EB' }}>●</span><span className="hero-feat-text">Plans personnalisés</span></div>
-            <div className="hero-feat"><span className="hero-feat-dot" style={{ color: '#06B6D4' }}>●</span><span className="hero-feat-text">Résultats prouvés</span></div>
-            <div className="hero-feat"><span className="hero-feat-dot" style={{ color: '#2563EB' }}>●</span><span className="hero-feat-text">Made in Cotonou</span></div>
+            <div className="hero-feat"><span className="hero-feat-dot accent">●</span><span className="hero-feat-text">Automatise sans effort</span></div>
+            <div className="hero-feat"><span className="hero-feat-dot cyan">●</span><span className="hero-feat-text">0 ligne de code requise</span></div>
+            <div className="hero-feat"><span className="hero-feat-dot accent">●</span><span className="hero-feat-text">Plans personnalisés</span></div>
+            <div className="hero-feat"><span className="hero-feat-dot cyan">●</span><span className="hero-feat-text">Résultats prouvés</span></div>
+            <div className="hero-feat"><span className="hero-feat-dot accent">●</span><span className="hero-feat-text">Made in Cotonou</span></div>
           </div>
         </div>
       </section>
@@ -200,7 +202,7 @@ export default function Landing() {
       <section className="testimonials">
         <div className="container">
           <div className="eyebrow eyebrow--center">Ce qu'ils en disent</div>
-          <h2 className="section-title" style={{ textAlign: 'center' }}>Résultats réels.<br />Pas des promesses.</h2>
+          <h2 className="section-title">Résultats réels.<br />Pas des promesses.</h2>
           <div className="testi-grid">
             <div className="testi-card">
               <div className="testi-metric">6h</div>

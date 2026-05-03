@@ -1,7 +1,22 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(npx vite:*)",
+      "Bash(python3 _bmad/scripts/resolve_customization.py --skill .claude/skills/bmad-create-prd --key workflow)",
+      "Bash(claude mcp:*)",
+      "Bash(PGPASSWORD=\"Maelterence94@\" psql -h db.psnjtreyfbnuebulohbu.supabase.co -p 5432 -U postgres -d postgres -c \"SELECT 1 as connected;\")",
+      "Bash(npm list:*)",
+      "Bash(node -e ':*)",
+      "Bash(nslookup:*)",
+      "Bash(curl -s -X POST https://psnjtreyfbnuebulohbu.supabase.co/rest/v1/rpc/pg_stat_statements -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzbmp0cmV5ZmJudWVidWxvaGJ1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Nzc3NzQzOCwiZXhwIjoyMDkzMzUzNDM4fQ.xgn0xE_HVJzXx7mt_JiIvNrK9Kza2J0tR_s_Vw2tBpE' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzbmp0cmV5ZmJudWVidWxvaGJ1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Nzc3NzQzOCwiZXhwIjoyMDkzMzUzNDM4fQ.xgn0xE_HVJzXx7mt_JiIvNrK9Kza2J0tR_s_Vw2tBpE')",
+      "Bash(curl -s -X POST https://psnjtreyfbnuebulohbu.supabase.co/rest/v1/rpc/ -H 'apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzbmp0cmV5ZmJudWVidWxvaGJ1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Nzc3NzQzOCwiZXhwIjoyMDkzMzUzNDM4fQ.xgn0xE_HVJzXx7mt_JiIvNrK9Kza2J0tR_s_Vw2tBpE' -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBzbmp0cmV5ZmJudWVidWxvaGJ1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3Nzc3NzQzOCwiZXhwIjoyMDkzMzUzNDM4fQ.xgn0xE_HVJzXx7mt_JiIvNrK9Kza2J0tR_s_Vw2tBpE' -H 'Content-Type: application/json')",
+      "Bash(curl:*)",
+      "Bash(node -e \"const d=require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\);const j=JSON.parse\\(d\\);console.log\\(j.length+' scripts en base:'\\);j.forEach\\(s=>console.log\\('  ✓',s.category,'—',s.name\\)\\)\")"
     ]
-  }
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "supabase"
+  ]
 }

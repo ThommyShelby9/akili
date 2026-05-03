@@ -23,6 +23,7 @@
 /* ── Stats band ── */
 .stats-band {
   background: var(--bg-1);
+  border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   padding: var(--s-10) 0;
 }
@@ -117,11 +118,11 @@
 
 /* ── Visual panel ── */
 .feat-visual {
-  background: var(--bg-1);
-  border: 1px solid var(--border-2);
+  background: #0D1117;
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--r-xl);
   overflow: hidden;
-  box-shadow: 0 20px 60px -12px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 60px -12px rgba(0,0,0,0.5), 0 0 40px -10px rgba(37,99,235,0.1);
 }
 .feat-visual .terminal {
   border-radius: 0;

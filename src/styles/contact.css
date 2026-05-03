@@ -1,0 +1,180 @@
+/* Akili — Contact · Cotonou Digital Dark */
+
+/* ── Hero ── */
+.contact-hero {
+  padding: var(--s-24) 0 var(--s-16);
+  text-align: center;
+}
+.contact-hero h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  margin-bottom: var(--s-4);
+  color: var(--text);
+}
+.contact-hero > .container > p {
+  color: var(--text-2);
+  font-size: 17px;
+  max-width: 460px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ── Content grid ── */
+.contact-content {
+  padding: 0 0 var(--s-20);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--s-10);
+  align-items: start;
+}
+
+/* ── Form ── */
+.contact-form-wrap {
+  background: var(--bg-1);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-xl);
+  padding: var(--s-10);
+}
+.contact-form h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: var(--s-6);
+  color: var(--text);
+}
+.contact-form .field {
+  margin-bottom: var(--s-4);
+}
+.contact-form .field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 7px;
+}
+.contact-form .field input,
+.contact-form .field textarea {
+  width: 100%;
+  padding: 13px 16px;
+  background: var(--bg);
+  border: 1px solid var(--border-2);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 15px;
+  border-radius: var(--r-md);
+  transition: border-color .15s, box-shadow .15s;
+  resize: vertical;
+}
+.contact-form .field input::placeholder,
+.contact-form .field textarea::placeholder { color: var(--text-3); }
+.contact-form .field input:focus,
+.contact-form .field textarea:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--glow-blue);
+  outline: none;
+}
+.contact-form .submit {
+  width: 100%;
+  margin-top: var(--s-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Success state */
+.contact-success {
+  text-align: center;
+  padding: var(--s-12) var(--s-8);
+}
+.contact-success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(61,214,140,0.15);
+  color: #3DD68C;
+  font-size: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--s-5);
+}
+.contact-success h3 {
+  font-size: 22px;
+  margin-bottom: var(--s-2);
+  color: var(--text);
+}
+.contact-success p {
+  color: var(--text-2);
+  margin-bottom: var(--s-6);
+}
+
+/* ── Info sidebar ── */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.contact-info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-4);
+  padding: var(--s-6);
+  background: var(--bg-1);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+  transition: border-color .2s;
+}
+.contact-info-card:hover { border-color: var(--border-3); }
+.contact-info-card svg { color: var(--blue); flex-shrink: 0; margin-top: 2px; }
+.contact-info-card strong { display: block; font-size: 14px; color: var(--text); margin-bottom: 2px; }
+.contact-info-card span,
+.contact-info-card a { font-size: 13px; color: var(--text-2); text-decoration: none; }
+.contact-info-card a:hover { color: var(--blue); }
+
+/* ── FAQ rapide ── */
+.contact-faq {
+  padding: var(--s-20) 0;
+  border-top: 1px solid var(--border);
+}
+.contact-faq .section-title {
+  text-align: center;
+  margin-bottom: var(--s-10);
+}
+.contact-faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-6);
+  max-width: 900px;
+  margin: 0 auto;
+}
+.contact-faq-item {
+  padding: var(--s-6);
+  background: var(--bg-1);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+}
+.contact-faq-item h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: var(--s-2);
+}
+.contact-faq-item p {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-info { order: -1; }
+  .contact-faq-grid { grid-template-columns: 1fr; }
+}
