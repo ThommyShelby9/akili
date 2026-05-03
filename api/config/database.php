@@ -22,18 +22,22 @@ function load_env(string $path): void {
     }
 }
 
+function env(string $key, string $default = ''): string {
+    return getenv($key) ?: ($_ENV[$key] ?? ($_SERVER[$key] ?? $default));
+}
+
 function get_supabase_url(): string {
-    return getenv('SUPABASE_URL') ?: '';
+    return env('SUPABASE_URL');
 }
 
 function get_supabase_key(): string {
-    return getenv('SUPABASE_SERVICE_KEY') ?: '';
+    return env('SUPABASE_SERVICE_KEY');
 }
 
 function get_jwt_secret(): string {
-    return getenv('SUPABASE_JWT_SECRET') ?: '';
+    return env('SUPABASE_JWT_SECRET');
 }
 
 function get_frontend_url(): string {
-    return getenv('FRONTEND_URL') ?: 'http://localhost:5173';
+    return env('FRONTEND_URL', 'http://localhost:5173');
 }

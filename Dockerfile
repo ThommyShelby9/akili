@@ -17,6 +17,10 @@ FROM php:8.3-apache
 # Activer mod_rewrite pour le routage
 RUN a2enmod rewrite headers
 
+# Passer les variables d'environnement à PHP via Apache
+RUN echo "PassEnv SUPABASE_URL SUPABASE_SERVICE_KEY FRONTEND_URL SMTP_HOST SMTP_PORT SMTP_USER SMTP_PASS SMTP_FROM TEAM_EMAIL" >> /etc/apache2/conf-available/environment.conf \
+    && a2enconf environment
+
 # Config Apache — servir le frontend + router l'API
 COPY docker/apache.conf /etc/apache2/sites-available/000-default.conf
 

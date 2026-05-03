@@ -80,10 +80,12 @@ nav.nav {
   display: none;
   flex-direction: column;
   gap: 5px;
-  padding: 8px;
+  padding: 10px;
   background: none;
   border: none;
   cursor: pointer;
+  z-index: 60;
+  position: relative;
 }
 .nav-burger span {
   display: block;
@@ -98,9 +100,12 @@ nav.nav {
 .nav-mobile {
   display: none;
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: #0F172A;
-  z-index: 100;
+  z-index: 9999;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -119,7 +124,8 @@ nav.nav {
   position: absolute;
   top: var(--s-6); right: var(--s-8);
   background: none; border: none;
-  font-size: 20px; color: var(--text-2); cursor: pointer;
+  font-size: 24px; color: var(--text-2); cursor: pointer;
+  padding: 8px;
 }
 
 /* ══════════════════════════════════════════
