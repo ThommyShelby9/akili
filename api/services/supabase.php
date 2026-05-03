@@ -60,6 +60,8 @@ function supabase_request(string $method, string $url, ?array $data = null): arr
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+    curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Dev only
 
     if ($method === 'POST') {
         curl_setopt($ch, CURLOPT_POST, true);

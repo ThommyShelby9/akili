@@ -2,7 +2,7 @@ import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from './AuthContext'
 
 export default function ProtectedRoute({ children, requiredRole }) {
-  const { user, loading } = useAuth()
+  const { user, profile, loading } = useAuth()
   const location = useLocation()
 
   if (loading) {
@@ -13,12 +13,29 @@ export default function ProtectedRoute({ children, requiredRole }) {
     )
   }
 
+  // Pas connecté
   if (!user) {
+    if (requiredRole === 'admin') {
+      return <Navigate to="/admin/login" replace />
+    }
     return <Navigate to="/login" state={{ from: location }} replace />
   }
 
-  if (requiredRole && user.user_metadata?.role !== requiredRole) {
-    return <Navigate to="/dashboard" replace />
+  // Rôle requis — vérifier le profil
+  if (requiredRole) {
+    if (!profile) {
+      return (
+        <div className="loading-screen">
+          <div className="loading-spinner"></div>
+        </div>
+      )
+    }
+    if (profile.role !== requiredRole) {
+      if (requiredRole === 'admin') {
+        return <Navigate to="/admin/login" replace />
+      }
+      return <Navigate to="/dashboard" replace />
+    }
   }
 
   return children

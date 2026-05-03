@@ -14,7 +14,9 @@
       "Bash(curl:*)",
       "Bash(node -e \"const d=require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\);const j=JSON.parse\\(d\\);console.log\\(j.length+' scripts en base:'\\);j.forEach\\(s=>console.log\\('  ✓',s.category,'—',s.name\\)\\)\")",
       "Bash(php --version)",
-      "Bash(php -S localhost:8000 -t api/ api/index.php)"
+      "Bash(php -S localhost:8000 -t api/ api/index.php)",
+      "Bash(php:*)",
+      "Bash(wc -l \"C:/Users/User/Downloads/Akili/akili-react/api/logs/\"*)"
     ]
   },
   "enableAllProjectMcpServers": true,

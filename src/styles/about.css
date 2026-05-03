@@ -1,0 +1,183 @@
+/* Akili — À propos · Cotonou Digital Dark */
+
+/* ── Hero ── */
+.about-hero {
+  padding: var(--s-24) 0 var(--s-16);
+  text-align: center;
+}
+.about-hero h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.0;
+  margin-bottom: var(--s-4);
+  color: var(--text);
+}
+.about-hero > .container > p {
+  color: var(--text-2);
+  font-size: 17px;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ── Mission ── */
+.about-mission {
+  padding: var(--s-16) 0;
+  border-top: 1px solid var(--border);
+}
+.about-mission-inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--s-12);
+  align-items: center;
+}
+.about-mission-text h2 {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  margin-bottom: var(--s-5);
+}
+.about-mission-text p {
+  color: var(--text-2);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: var(--s-4);
+}
+.about-mission-text p:last-child { margin-bottom: 0; }
+
+.about-mission-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+.about-stat {
+  padding: var(--s-5);
+  background: var(--bg-1);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+  text-align: center;
+}
+.about-stat-value {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+.about-stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: var(--s-1);
+}
+
+/* ── Valeurs ── */
+.about-values {
+  padding: var(--s-16) 0;
+  border-top: 1px solid var(--border);
+}
+.about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-5);
+}
+.about-value-card {
+  padding: var(--s-6);
+  background: var(--bg-1);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+  transition: border-color .2s, transform .2s;
+}
+.about-value-card:hover { border-color: var(--border-3); transform: translateY(-2px); }
+.about-value-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(37,99,235,0.1);
+  border-radius: var(--r-md);
+  color: var(--accent);
+  margin-bottom: var(--s-4);
+}
+.about-value-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: var(--s-2);
+}
+.about-value-card p {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+
+/* ── Équipe ── */
+.about-team {
+  padding: var(--s-16) 0;
+  border-top: 1px solid var(--border);
+}
+.about-team-grid {
+  display: flex;
+  justify-content: center;
+  gap: var(--s-6);
+  flex-wrap: wrap;
+}
+.about-team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-6) var(--s-8);
+  background: var(--bg-1);
+  border: 1px solid var(--border-2);
+  border-radius: var(--r-lg);
+  min-width: 180px;
+  text-align: center;
+}
+.about-team-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(37,99,235,0.12);
+  border: 2px solid rgba(37,99,235,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: var(--s-2);
+}
+.about-team-card strong { font-size: 15px; color: var(--text); }
+.about-team-card span { font-size: 12px; color: var(--text-2); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ── CTA ── */
+.about-cta {
+  padding: var(--s-20) 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+.about-cta h2 {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: var(--s-8);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .about-hero { padding: var(--s-16) 0 var(--s-10); }
+  .about-hero h1 { font-size: clamp(32px, 7vw, 48px); }
+  .about-mission-inner { grid-template-columns: 1fr; gap: var(--s-8); }
+  .about-mission-stats { flex-direction: row; flex-wrap: wrap; }
+  .about-stat { flex: 1; min-width: 120px; }
+  .about-values-grid { grid-template-columns: 1fr; }
+  .about-cta h2 { font-size: clamp(24px, 5vw, 36px); }
+}

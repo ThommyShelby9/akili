@@ -217,6 +217,7 @@ export default function Services() {
       </section>
 
       {/* HIGHLIGHT — BPA */}
+      <RevealOnScroll>
       <section className="feat-block" id="bpa">
         <div className="container">
           <div className="feat-inner">
@@ -250,8 +251,10 @@ export default function Services() {
           </div>
         </div>
       </section>
+      </RevealOnScroll>
 
       {/* HIGHLIGHT — AaaS */}
+      <RevealOnScroll>
       <section className="feat-block" id="aaas">
         <div className="container">
           <div className="feat-inner rev">
@@ -287,8 +290,10 @@ export default function Services() {
           </div>
         </div>
       </section>
+      </RevealOnScroll>
 
       {/* RÉSUMÉ */}
+      <RevealOnScroll>
       <section className="summary-section">
         <div className="container">
           <div className="eyebrow eyebrow--center">En résumé</div>
@@ -309,8 +314,10 @@ export default function Services() {
           </div>
         </div>
       </section>
+      </RevealOnScroll>
 
       {/* CTA FINAL */}
+      <RevealOnScroll direction="scale">
       <section className="cta-final">
         <div className="container">
           <div className="eyebrow eyebrow--center">Prêt à déléguer ?</div>
@@ -322,6 +329,7 @@ export default function Services() {
           </div>
         </div>
       </section>
+      </RevealOnScroll>
 
       <Footer />
     </div>

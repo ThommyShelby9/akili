@@ -547,9 +547,62 @@
 .settings-toast.error { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3); color: #F87171; }
 
 /* ── Responsive ── */
+@media (max-width: 1024px) {
+  .dash-layout { grid-template-columns: 64px 1fr; }
+  .dash-sidebar { padding: var(--s-3) 0; }
+  .dash-sidebar-top { padding: 0 var(--s-2); margin-bottom: var(--s-4); }
+  .dash-nav-item span { display: none; }
+  .dash-nav-item { justify-content: center; padding: var(--s-3); }
+  .dash-user-info { display: none; }
+  .dash-user { justify-content: center; }
+  .dash-sidebar-bottom { flex-direction: column; align-items: center; gap: var(--s-2); }
+  .dash-quick-scripts { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 768px) {
   .dash-layout { grid-template-columns: 1fr; }
-  .dash-sidebar { display: none; }
-  .dash-stats-grid { grid-template-columns: 1fr; }
+  .dash-sidebar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    flex-direction: row;
+    border-right: none;
+    border-top: 1px solid var(--border);
+    padding: var(--s-2) var(--s-3);
+    z-index: 50;
+    background: #0B1120;
+  }
+  .dash-sidebar-top { display: none; }
+  .dash-sidebar-bottom { display: none; }
+  .dash-nav {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    gap: 0;
+  }
+  .dash-nav-item { flex-direction: column; gap: 2px; padding: var(--s-2); font-size: 10px; }
+  .dash-nav-item span { display: block; font-size: 10px; }
+  .dash-main { padding: var(--s-5) var(--s-4); padding-bottom: 80px; }
+  .dash-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .dash-quick-scripts { grid-template-columns: 1fr; }
+  .dash-welcome { flex-direction: column; align-items: flex-start; gap: var(--s-4); }
+  .dash-welcome h1 { font-size: 20px; }
+  .dash-page-header { flex-direction: column; align-items: flex-start; gap: var(--s-3); }
+  .dash-page-header h1 { font-size: 22px; }
   .script-grid { grid-template-columns: 1fr; }
+  .script-detail { max-width: 100%; }
+  .script-filters { gap: var(--s-3); }
+  .script-categories { overflow-x: auto; flex-wrap: nowrap; padding-bottom: var(--s-2); }
+  .script-cat-btn { white-space: nowrap; }
+  .logs-detail { max-width: 100%; margin: var(--s-4); padding: var(--s-5); }
+  .settings-section { padding: var(--s-5); }
+}
+
+@media (max-width: 480px) {
+  .dash-stats-grid { grid-template-columns: 1fr; }
+  .dash-stat-value { font-size: 24px; }
+  .dash-recent-item { padding: var(--s-3) var(--s-4); }
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Mail, MapPin, MessageCircle, HelpCircle, Send } from 'lucide-react'
 import Seo from '../components/Seo'
+import RevealOnScroll from '../components/RevealOnScroll'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { api } from '../lib/api'
@@ -57,6 +58,7 @@ export default function Contact() {
       </section>
 
       {/* CONTENT */}
+      <RevealOnScroll>
       <section className="contact-content">
         <div className="container">
           <div className="contact-grid">
@@ -180,8 +182,10 @@ export default function Contact() {
           </div>
         </div>
       </section>
+      </RevealOnScroll>
 
       {/* FAQ RAPIDE */}
+      <RevealOnScroll>
       <section className="contact-faq">
         <div className="container">
           <h2 className="section-title">Questions fréquentes</h2>
@@ -195,6 +199,7 @@ export default function Contact() {
           </div>
         </div>
       </section>
+      </RevealOnScroll>
 
       <Footer />
     </div>

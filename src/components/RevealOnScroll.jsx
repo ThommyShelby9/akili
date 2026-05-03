@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-export default function RevealOnScroll({ children, delay = 0, className = '' }) {
+export default function RevealOnScroll({ children, delay = 0, direction = 'up', className = '' }) {
   const ref = useRef(null)
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function RevealOnScroll({ children, delay = 0, className = '' }) 
           observer.unobserve(el)
         }
       },
-      { threshold: 0.12 }
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     )
 
     observer.observe(el)
@@ -23,7 +23,7 @@ export default function RevealOnScroll({ children, delay = 0, className = '' }) 
   }, [delay])
 
   return (
-    <div ref={ref} className={`reveal-hidden ${className}`}>
+    <div ref={ref} className={`reveal-hidden reveal-${direction} ${className}`}>
       {children}
     </div>
   )

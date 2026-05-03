@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /
+
+# Ne pas réécrire les fichiers/dossiers existants
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Ne pas réécrire /api (géré par le dossier api/)
+RewriteCond %{REQUEST_URI} !^/api
+
+# SPA fallback — tout le reste vers index.html
+RewriteRule ^ index.html [L]

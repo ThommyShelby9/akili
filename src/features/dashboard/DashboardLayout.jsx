@@ -1,5 +1,6 @@
-import { NavLink, Outlet, useNavigate } from 'react-router-dom'
+import { NavLink, Link, Outlet, useNavigate } from 'react-router-dom'
 import { LayoutDashboard, FileCode, Clock, Settings, LogOut } from 'lucide-react'
+import AkiliLogo from '../../components/AkiliLogo'
 import { useAuth } from '../auth/AuthContext'
 
 const NAV_ITEMS = [
@@ -23,7 +24,9 @@ export default function DashboardLayout() {
       {/* Sidebar */}
       <aside className="dash-sidebar">
         <div className="dash-sidebar-top">
-          <img src="/2.png" alt="Akili" className="dash-logo" />
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <AkiliLogo variant="nav" light />
+          </Link>
         </div>
 
         <nav className="dash-nav">

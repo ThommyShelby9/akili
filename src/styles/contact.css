@@ -174,7 +174,16 @@
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  .contact-grid { grid-template-columns: 1fr; }
-  .contact-info { order: -1; }
+  .contact-hero { padding: var(--s-16) 0 var(--s-10); }
+  .contact-hero h1 { font-size: clamp(32px, 7vw, 48px); }
+  .contact-grid { grid-template-columns: 1fr; gap: var(--s-6); }
+  .contact-info { order: -1; flex-direction: row; flex-wrap: wrap; gap: var(--s-3); }
+  .contact-info-card { flex: 1; min-width: 140px; padding: var(--s-4); }
+  .contact-form-wrap { padding: var(--s-6); }
   .contact-faq-grid { grid-template-columns: 1fr; }
+  .contact-faq-item { padding: var(--s-5); }
+}
+@media (max-width: 480px) {
+  .contact-info { flex-direction: column; }
+  .contact-info-card { min-width: auto; }
 }

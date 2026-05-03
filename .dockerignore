@@ -1,0 +1,10 @@
+node_modules
+dist
+.env
+.git
+api/logs
+_bmad-output
+_bmad
+.claude
+*.md
+!README.md

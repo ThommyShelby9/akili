@@ -1,13 +1,13 @@
 <?php
 /**
- * Middleware Auth — valide le JWT Supabase
+ * Middleware Auth — valide le JWT via Supabase Auth API
  */
 
 require_once __DIR__ . '/../config/database.php';
-require_once __DIR__ . '/../services/jwt.php';
 
 /**
- * Vérifie le token JWT et retourne les données utilisateur
+ * Vérifie le token JWT via l'API Supabase (auth.getUser)
+ * Plus fiable que la vérification locale — pas besoin du JWT secret
  * @return array{id: string, email: string, role: string} | null
  */
 function authenticate(): ?array {
@@ -18,16 +18,48 @@ function authenticate(): ?array {
     }
 
     $token = $matches[1];
-    $payload = verify_jwt($token, get_jwt_secret());
 
-    if (!$payload) {
+    // Vérifier le token via Supabase Auth API
+    $url = get_supabase_url() . '/auth/v1/user';
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'apikey: ' . get_supabase_key(),
+        'Authorization: Bearer ' . $token,
+    ]);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+    curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Dev only — à activer en prod
+
+    $response = curl_exec($ch);
+    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $curl_error = curl_error($ch);
+    curl_close($ch);
+
+    // Debug log
+    if ($curl_error || $http_code !== 200) {
+        log_error("Auth validation failed", [
+            'url' => $url,
+            'http_code' => $http_code,
+            'curl_error' => $curl_error,
+            'response' => substr($response ?: '', 0, 200),
+            'token_prefix' => substr($token, 0, 20) . '...',
+        ]);
+    }
+
+    if ($http_code !== 200 || !$response) {
+        return null;
+    }
+
+    $user = json_decode($response, true);
+    if (!$user || !isset($user['id'])) {
         return null;
     }
 
     return [
-        'id' => $payload['sub'] ?? '',
-        'email' => $payload['email'] ?? '',
-        'role' => $payload['user_metadata']['role'] ?? 'user',
+        'id' => $user['id'],
+        'email' => $user['email'] ?? '',
+        'role' => $user['user_metadata']['role'] ?? 'user',
     ];
 }
 
