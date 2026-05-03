@@ -10,7 +10,7 @@ services:
       - key: SUPABASE_SERVICE_KEY
         sync: false  # À remplir manuellement dans Render
       - key: FRONTEND_URL
-        value: https://akili.onrender.com
+        value: https://akili-iaiz.onrender.com
       - key: SMTP_HOST
         sync: false
       - key: SMTP_PORT
