@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { ArrowRight, Mail, Phone, X } from 'lucide-react'
 import AkiliLogo from './AkiliLogo'
+
+const NAV_ITEMS = [
+  { to: '/services', label: 'Services', desc: 'Scripts & automatisations' },
+  { to: '/pricing',  label: 'Tarifs',   desc: 'Plans & abonnements' },
+  { to: '/docs',     label: 'Docs',     desc: 'Guides & ressources' },
+  { to: '/about',    label: 'À propos', desc: 'Notre mission' },
+  { to: '/contact',  label: 'Contact',  desc: 'Parlons de ton projet' },
+]
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -11,8 +20,12 @@ export default function Nav() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [location.pathname])
+
   const close = () => setMenuOpen(false)
-  const isActive = (path) => location.pathname === path ? 'active' : undefined
+  const isActive = (path) => location.pathname === path
 
   return (
     <>
@@ -22,32 +35,79 @@ export default function Nav() {
             <AkiliLogo variant="nav" light />
           </Link>
           <div className="nav-links">
-            <Link to="/services" className={isActive('/services')}>Services</Link>
-            <Link to="/pricing" className={isActive('/pricing')}>Tarifs</Link>
-            <Link to="/docs" className={isActive('/docs')}>Docs</Link>
-            <Link to="/about" className={isActive('/about')}>À propos</Link>
-            <Link to="/contact" className={isActive('/contact')}>Contact</Link>
+            {NAV_ITEMS.map(item => (
+              <Link key={item.to} to={item.to} className={isActive(item.to) ? 'active' : undefined}>
+                {item.label}
+              </Link>
+            ))}
             <Link to="/login" className="nav-cta">Commencer →</Link>
           </div>
           <button
             className={`nav-burger${menuOpen ? ' active' : ''}`}
             onClick={() => setMenuOpen(o => !o)}
-            aria-label="Ouvrir le menu"
+            aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={menuOpen}
           >
             <span></span><span></span><span></span>
           </button>
         </nav>
       </div>
 
-      <div className={`nav-mobile${menuOpen ? ' open' : ''}`} role="dialog" aria-label="Navigation">
-        <button className="nav-mobile-close" onClick={close} aria-label="Fermer">✕</button>
-        <Link to="/services" className={isActive('/services')} onClick={close}>Services</Link>
-        <Link to="/pricing" className={isActive('/pricing')} onClick={close}>Tarifs</Link>
-        <Link to="/docs" className={isActive('/docs')} onClick={close}>Docs</Link>
-        <Link to="/about" className={isActive('/about')} onClick={close}>À propos</Link>
-        <Link to="/contact" className={isActive('/contact')} onClick={close}>Contact</Link>
-        <Link to="/login" className="nav-cta btn-primary" onClick={close}>Commencer →</Link>
-      </div>
+      <div
+        className={`nav-mobile-backdrop${menuOpen ? ' open' : ''}`}
+        onClick={close}
+        aria-hidden="true"
+      />
+
+      <aside
+        className={`nav-mobile${menuOpen ? ' open' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation principale"
+      >
+        <header className="nav-mobile-header">
+          <Link to="/" className="nav-mobile-logo" onClick={close}>
+            <AkiliLogo variant="nav" light />
+          </Link>
+          <button className="nav-mobile-close" onClick={close} aria-label="Fermer">
+            <X size={22} />
+          </button>
+        </header>
+
+        <nav className="nav-mobile-list">
+          {NAV_ITEMS.map((item, i) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              onClick={close}
+              className={`nav-mobile-item${isActive(item.to) ? ' active' : ''}`}
+              style={{ '--i': i }}
+            >
+              <div>
+                <span className="nav-mobile-item-label">{item.label}</span>
+                <span className="nav-mobile-item-desc">{item.desc}</span>
+              </div>
+              <ArrowRight size={18} className="nav-mobile-item-arrow" />
+            </Link>
+          ))}
+        </nav>
+
+        <div className="nav-mobile-cta">
+          <Link to="/login" className="nav-mobile-cta-btn" onClick={close}>
+            Commencer maintenant
+            <ArrowRight size={16} />
+          </Link>
+        </div>
+
+        <footer className="nav-mobile-footer">
+          <a href="mailto:contact@akili.dev" className="nav-mobile-footer-link">
+            <Mail size={14} /> contact@akili.dev
+          </a>
+          <a href="tel:+22900000000" className="nav-mobile-footer-link">
+            <Phone size={14} /> Cotonou, Bénin
+          </a>
+        </footer>
+      </aside>
     </>
   )
 }
