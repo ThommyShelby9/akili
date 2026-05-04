@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Play } from 'lucide-react'
 import { api } from '../../lib/api'
+import ScriptTerminal from './ScriptTerminal'
+import { buildCommands } from './scriptCommands'
 
 export default function ScriptDetail() {
   const { slug } = useParams()
@@ -12,6 +14,9 @@ export default function ScriptDetail() {
   const [running, setRunning] = useState(false)
   const [result, setResult] = useState(null)
   const [error, setError] = useState('')
+  const [terminalCommands, setTerminalCommands] = useState(null)
+  const [terminalDuration, setTerminalDuration] = useState(2000)
+  const [terminalDone, setTerminalDone] = useState(false)
 
   useEffect(() => {
     api.scripts.get(slug)
@@ -39,14 +44,22 @@ export default function ScriptDetail() {
     setRunning(true)
     setError('')
     setResult(null)
+    setTerminalCommands(null)
+    setTerminalDone(false)
     try {
       const res = await api.scripts.run(slug, params)
+      const commands = buildCommands(slug, params, res.data)
+      setTerminalDuration(Math.max(2500, Math.min(8000, res.data?.duration_ms || 3000)))
+      setTerminalCommands(commands)
       setResult(res.data)
     } catch (err) {
       setError(err.message || 'Erreur lors de l\'exécution')
-    } finally {
       setRunning(false)
     }
+  }
+
+  function handleTerminalDone() {
+    setRunning(false)
   }
 
   function isValid() {
@@ -135,9 +148,19 @@ export default function ScriptDetail() {
         )}
       </button>
 
-      {/* Résultat */}
-      {result && (
-        <div className="script-result success">
+      {/* Terminal animé */}
+      {terminalCommands && (
+        <ScriptTerminal
+          commands={terminalCommands}
+          durationMs={terminalDuration}
+          title={`akili — ${slug}`}
+          onDone={handleTerminalDone}
+        />
+      )}
+
+      {/* Résultat — affiché une fois le terminal terminé */}
+      {result && terminalDone && (
+        <div className="script-result success" style={{ marginTop: 'var(--s-5)' }}>
           <div className="script-result-header">
             <span className="script-result-icon">✓</span>
             <strong>Terminé avec succès</strong>

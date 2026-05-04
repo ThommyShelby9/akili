@@ -363,6 +363,83 @@
 }
 .script-result-output { font-family: var(--font-mono); font-size: 12px; color: var(--text-2); background: var(--bg); padding: var(--s-4); border-radius: var(--r-md); overflow-x: auto; white-space: pre-wrap; }
 
+/* ── Terminal animé ── */
+.script-terminal {
+  margin-top: var(--s-5);
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  font-family: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace;
+}
+.script-terminal-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: linear-gradient(180deg, #21262d, #161b22);
+  border-bottom: 1px solid #30363d;
+}
+.script-terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.script-terminal-dot.red    { background: #ff5f57; }
+.script-terminal-dot.yellow { background: #febc2e; }
+.script-terminal-dot.green  { background: #28c840; }
+.script-terminal-title {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: #8b949e;
+  font-family: inherit;
+  margin-right: 60px; /* compense les 3 dots à gauche */
+}
+.script-terminal-body {
+  padding: 14px 16px;
+  max-height: 360px;
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #c9d1d9;
+  background: #0d1117;
+}
+.script-terminal-body::-webkit-scrollbar { width: 8px; }
+.script-terminal-body::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+.script-terminal-line {
+  display: flex;
+  gap: 8px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.script-terminal-prompt {
+  color: #3DD68C;
+  flex-shrink: 0;
+  user-select: none;
+  font-weight: 600;
+}
+.script-terminal-text { flex: 1; }
+.script-terminal-line.cmd .script-terminal-text { color: #e6edf3; }
+.script-terminal-line.out .script-terminal-text { color: #8b949e; }
+.script-terminal-line.info .script-terminal-text { color: #58a6ff; }
+.script-terminal-line.ok   .script-terminal-text { color: #3DD68C; }
+.script-terminal-line.warn .script-terminal-text { color: #f0b429; }
+.script-terminal-line.err  .script-terminal-text { color: #f87171; }
+.script-terminal-caret {
+  display: inline-block;
+  color: #3DD68C;
+  margin-left: 2px;
+  animation: terminal-blink 1s steps(2) infinite;
+}
+.script-terminal-caret.blink { animation: terminal-blink 1s steps(2) infinite; }
+@keyframes terminal-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 /* ── Logs ── */
 .logs-filters { display: flex; gap: var(--s-3); margin-bottom: var(--s-5); }
 .logs-filters select { padding: 8px 14px; background: var(--bg-1); border: 1px solid var(--border-2); color: var(--text); border-radius: var(--r-md); font-size: 13px; }
